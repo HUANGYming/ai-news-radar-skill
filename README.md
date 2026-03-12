@@ -85,6 +85,51 @@ Try one of these exactly as written:
 - `$ai-news-radar Track recent AI regulation and policy updates from the last 14 days.`
 - `$ai-news-radar Summarize only model launches and major product updates from this week.`
 
+## Invocation structure example
+
+If you are wondering whether you need this skill, the easiest test is to look at the input and output shape.
+
+Typical input:
+
+```text
+$ai-news-radar Summarize the most important AI news from the last 7 days.
+Focus on model releases, product updates, regulation, and funding.
+Use Chinese. Rank items by impact. Include dates and source links.
+```
+
+Typical output:
+
+```markdown
+AI news snapshot
+
+- Company A launched a new model family.
+Why it matters: This may shift the competitive baseline for coding, reasoning, or enterprise use cases.
+Publication date: March 10, 2026.
+Sources: https://example.com/source1, https://example.com/source2
+
+- Regulator B proposed a new AI compliance rule.
+Why it matters: This could affect disclosure requirements, deployment reviews, and enterprise adoption.
+Publication date: March 8, 2026.
+Sources: https://example.com/source3
+
+Watch next
+
+- Whether competitors respond with similar launches.
+- Whether the policy moves from proposal to enforcement.
+```
+
+You probably need this skill if:
+
+- you often ask for "today's AI news" or "this week's AI updates"
+- you want ranked summaries instead of a pile of links
+- you care about dates, source links, and why each item matters
+
+You may not need this skill if:
+
+- you only want one specific article, not a summary
+- you already have a custom AI-news prompt you use every day
+- you do not care about structured output
+
 ## Output style
 
 The skill is intended to produce:
