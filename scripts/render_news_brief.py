@@ -33,24 +33,14 @@ def render_item(item: dict) -> list[str]:
     ]
 
 
-def render_watch_next(watch_next: list[str]) -> list[str]:
-    lines = ["Watch next", ""]
-    for item in watch_next:
-        lines.append(f"- {item}")
-    return lines
-
-
 def render(payload: dict) -> str:
     title = payload.get("title", "AI news snapshot")
     items = payload.get("items", [])
-    watch_next = payload.get("watch_next", [])
 
     if not isinstance(items, list) or not items:
         raise ValueError("items must be a non-empty list")
     if len(items) > 8:
         raise ValueError("items must contain at most 8 entries")
-    if watch_next and (not isinstance(watch_next, list) or len(watch_next) > 3):
-        raise ValueError("watch_next must be a list with at most 3 entries")
 
     for index, item in enumerate(items, start=1):
         validate_item(item, index)
@@ -58,9 +48,6 @@ def render(payload: dict) -> str:
     lines = [title, ""]
     for item in items:
         lines.extend(render_item(item))
-
-    if watch_next:
-        lines.extend(render_watch_next(watch_next))
 
     return "\n".join(lines).rstrip() + "\n"
 

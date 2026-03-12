@@ -37,12 +37,6 @@ Sources: https://blog.google/products-and-platforms/products/chrome/chrome-expan
 Why it matters: 开源阵营正在继续押注“更高训练效率”的模型架构，而不只是单纯堆更多参数和算力。
 Publication date: March 5, 2026.
 Sources: https://allenai.org/blog/olmohybrid, https://allenai.org/newsletters/2026-03-newsletter
-
-Watch next
-
-- GTC 2026 期间是否会出现新的开源模型或算力合作发布。
-- Google I/O 2026 前后 Gemini 是否会有更大范围产品更新。
-- 美国政府与 AI 公司在军用和监控用途上的政策边界是否继续升级。
 ```
 
 ## 怎么通过 Codex 使用

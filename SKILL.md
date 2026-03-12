@@ -48,10 +48,8 @@ Structured output path
 - Top-level fields:
   - `title`
   - `items`
-  - `watch_next`
 - The renderer enforces:
   - 1 to 8 news items
-  - 0 to 3 watch items
   - non-empty source lists
 
 Output format
@@ -63,7 +61,6 @@ Output format
   - why it matters in one sentence
   - the publication date
   - one or two source links
-- End with `Watch next` and list 2 or 3 developments worth monitoring.
 
 Quality bar
 
@@ -97,9 +94,4 @@ Sources: https://example.com/post, https://example.com/report
 Why it matters: This could change how model providers handle disclosure, safety documentation, and enterprise procurement.
 Publication date: March 8, 2026.
 Sources: https://example.com/policy
-
-Watch next
-
-- Whether competitors respond with matching launches.
-- Whether the regulation moves from proposal to enforcement.
 ```
