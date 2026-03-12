@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI News Radar"
+  short_description: "Summarize current AI news"
+  default_prompt: "Use $ai-news-radar to summarize the most important recent AI news, rank the items by impact, and include dates plus source links."
+
+policy:
+  allow_implicit_invocation: true
