@@ -1,159 +1,70 @@
 # AI News Radar Skill
 
-`ai-news-radar` is a small Codex skill for summarizing current AI news.
+## 简介
 
-It is designed to:
+`ai-news-radar` 是一个用于汇总近期 AI 热点新闻的 Codex skill。
 
-- scan recent AI developments from the last 7 days by default
-- prioritize high-impact items over raw chronology
-- cover model launches, product updates, research, regulation, funding, and major industry moves
-- return a concise ranked briefing with dates and source links
+它会优先关注近 7 天的重要动态，并按影响力整理输出，覆盖这些方向：
 
-## Who this is for
+- 模型发布与升级
+- 产品更新
+- 研究进展
+- 监管与政策
+- 融资、收购与行业合作
 
-This repository is for people who want a ready-made prompt skill that can summarize the latest AI news without manually designing the prompt every time.
+输出目标是：给出一份简洁、可读、带日期和来源链接的 AI 新闻摘要。
 
-If you are new to Codex skills, the short version is:
+## 结果示例
 
-- install this skill into your local skills folder
-- invoke it with `$ai-news-radar`
-- ask for the AI news window or topic you care about
+下面是一份基于真实新闻生成的输出示例：
 
-If you do not have a skill system yet, you can still use the prompt examples in this repository directly.
+```markdown
+AI news snapshot
 
-## How to use this skill
+- OpenAI announced it will acquire Promptfoo.
+Why it matters: 这指向企业级 AI 的下一轮重点正在从“能不能做 agent”转向“能不能安全评测和治理 agent”。
+Publication date: March 9, 2026.
+Sources: https://openai.com/index/openai-to-acquire-promptfoo/
 
-There are two common ways to use it.
+- Google expanded Gemini in Chrome to India, New Zealand, and Canada.
+Why it matters: 这说明浏览器内置 AI 正在从实验功能转向更大范围分发，Chrome 会继续成为 Google 端侧和入口级 AI 的重要落点。
+Publication date: March 11, 2026.
+Sources: https://blog.google/products-and-platforms/products/chrome/chrome-expands-india-new-zealand-canada/
 
-### Option 1: Install it as a Codex skill
+- Ai2 released OLMo Hybrid, a fully open 7B model family focused on better data efficiency.
+Why it matters: 开源阵营正在继续押注“更高训练效率”的模型架构，而不只是单纯堆更多参数和算力。
+Publication date: March 5, 2026.
+Sources: https://allenai.org/blog/olmohybrid, https://allenai.org/newsletters/2026-03-newsletter
 
-1. Clone this repository:
+Watch next
+
+- GTC 2026 期间是否会出现新的开源模型或算力合作发布。
+- Google I/O 2026 前后 Gemini 是否会有更大范围产品更新。
+- 美国政府与 AI 公司在军用和监控用途上的政策边界是否继续升级。
+```
+
+## 怎么通过 Codex 使用
+
+1. 克隆仓库：
 
 ```bash
 git clone https://github.com/HUANGYming/ai-news-radar-skill.git
 ```
 
-2. Copy or place the folder into your local Codex skills directory, usually:
+2. 把这个目录放到本地 Codex skills 目录，例如：
 
 ```bash
 $CODEX_HOME/skills/ai-news-radar
 ```
 
-3. In a Codex chat, invoke the skill explicitly:
+3. 在 Codex 中直接调用：
 
 ```text
-$ai-news-radar Summarize the most important AI news from the last 7 days.
+$ai-news-radar 帮我总结最近 7 天最重要的 AI 新闻，按影响力排序，并附上日期和来源链接。
 ```
 
-4. You can also ask for a filtered version:
+也可以这样用：
 
 ```text
-$ai-news-radar Summarize this week's open-source AI news in Chinese and include source links.
+$ai-news-radar 请只总结这周的开源 AI 新闻，用中文输出。
 ```
-
-### Option 2: Use it as a prompt template
-
-If you are not using Codex skills yet, open `SKILL.md` and reuse its instructions directly in ChatGPT, Codex, or another LLM.
-
-For example:
-
-```text
-Summarize the most important AI news from the last 7 days.
-Cover model releases, product launches, research, regulation, funding, and major industry moves.
-Rank items by impact. Include publication dates and source links. Use Chinese for the summary.
-```
-
-## Files
-
-- `SKILL.md`: the actual skill definition used by Codex
-- `agents/openai.yaml`: UI metadata for skill lists and quick invocation
-- `README.md`: beginner-facing instructions for GitHub visitors
-
-## Example prompts
-
-- `Summarize the most important AI news from the last 7 days.`
-- `Give me a Chinese summary of this week's AI news with source links.`
-- `Summarize only open-source AI news from the last 14 days.`
-- `Track recent AI policy and regulation developments.`
-
-## Beginner examples
-
-Try one of these exactly as written:
-
-- `$ai-news-radar What are the hottest AI news items today?`
-- `$ai-news-radar Give me a Chinese summary of this week's AI news.`
-- `$ai-news-radar Track recent AI regulation and policy updates from the last 14 days.`
-- `$ai-news-radar Summarize only model launches and major product updates from this week.`
-
-## Invocation structure example
-
-If you are wondering whether you need this skill, the easiest test is to look at the input and output shape.
-
-Typical input:
-
-```text
-$ai-news-radar Summarize the most important AI news from the last 7 days.
-Focus on model releases, product updates, regulation, and funding.
-Use Chinese. Rank items by impact. Include dates and source links.
-```
-
-Typical output:
-
-```markdown
-AI news snapshot
-
-- Company A launched a new model family.
-Why it matters: This may shift the competitive baseline for coding, reasoning, or enterprise use cases.
-Publication date: March 10, 2026.
-Sources: https://example.com/source1, https://example.com/source2
-
-- Regulator B proposed a new AI compliance rule.
-Why it matters: This could affect disclosure requirements, deployment reviews, and enterprise adoption.
-Publication date: March 8, 2026.
-Sources: https://example.com/source3
-
-Watch next
-
-- Whether competitors respond with similar launches.
-- Whether the policy moves from proposal to enforcement.
-```
-
-You probably need this skill if:
-
-- you often ask for "today's AI news" or "this week's AI updates"
-- you want ranked summaries instead of a pile of links
-- you care about dates, source links, and why each item matters
-
-You may not need this skill if:
-
-- you only want one specific article, not a summary
-- you already have a custom AI-news prompt you use every day
-- you do not care about structured output
-
-## Output style
-
-The skill is intended to produce:
-
-- an `AI news snapshot` header
-- 5 to 8 ranked items
-- one-line explanation of why each item matters
-- exact publication dates
-- one or two source links per item
-- a short `Watch next` section
-
-## What this skill does well
-
-- saves you from rewriting the same AI-news prompt repeatedly
-- keeps the output concise instead of dumping many links
-- pushes the model to use exact dates and clearer source attribution
-- works for both broad news scans and focused categories like regulation or open source
-
-## What it does not do
-
-- it does not crawl private data sources for you
-- it does not guarantee every item is independently verified if only one official source exists
-- it does not replace human judgment on whether a story is truly important
-
-## Repository
-
-GitHub: [HUANGYming/ai-news-radar-skill](https://github.com/HUANGYming/ai-news-radar-skill)
