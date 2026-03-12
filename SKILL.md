@@ -33,6 +33,26 @@ Core workflow
    - major reporting outlets with clear publication dates
 4. Verify notable claims across at least two sources when possible. If an item is an official first-party announcement and no second high-signal source adds material context, a single official source is acceptable. Say that it is based on the official announcement.
 5. Rank items by likely impact, not just publication time.
+6. When a stable output format matters, first collect the final items into structured JSON and render the markdown with `scripts/render_news_brief.py`.
+
+Structured output path
+
+- Use `references/sample_brief.json` as the schema example.
+- Render with:
+  - `python3 scripts/render_news_brief.py references/sample_brief.json`
+- Required JSON fields per item:
+  - `headline`
+  - `why_it_matters`
+  - `publication_date`
+  - `sources`
+- Top-level fields:
+  - `title`
+  - `items`
+  - `watch_next`
+- The renderer enforces:
+  - 1 to 8 news items
+  - 0 to 3 watch items
+  - non-empty source lists
 
 Output format
 
